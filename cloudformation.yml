@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: gaurabVpc
+        - Key: Creator
+          Value: gauravupreti1230@gmail.com
+        - Key: Project
+          Value: Intern
+        - Key: Deletable
+          Value: Yes
+
+  gaurabSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: "10.0.1.0/24"  # Adjusted subnet CIDR block within the VPC CIDR range
+
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for API
+      VpcId: !Ref MyVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: "0.0.0.0/0"  # Allowing access from anywhere
+      Tags:
+        - Key: Name
+          Value: MySecurityGroup
+        - Key: Creator
+          Value: gauravupreti1230@gmail.com
+        - Key: Project
+          Value: Intern
+        - Key: Deletable
+          Value: Yes
