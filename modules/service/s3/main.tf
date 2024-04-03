@@ -1,8 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
-
 resource "aws_s3_bucket" "aws_s3_bucket_example" {
     bucket = var.gaurab-test-s3-bucket
     
@@ -12,11 +7,6 @@ resource "aws_s3_bucket" "aws_s3_bucket_example" {
         Project = "Intern"
         Deletable = "Yes"
         }
-
-website {
-    index_document = "index.html"
-    error_document = "error.html"
-}
 }
 
 resource "aws_s3_object" "dist_file" {

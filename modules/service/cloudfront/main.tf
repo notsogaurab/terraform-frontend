@@ -1,10 +1,3 @@
-# Define the CloudFront distribution
-provider "aws" {
-  region = "us-east-1"
-  
-}
-
-
 data "aws_s3_bucket" "s3" {
   bucket = "gaurab-test-s3-bucket"
 }
@@ -12,7 +5,6 @@ data "aws_s3_bucket" "s3" {
 output "s3_bucket" {
     value = data.aws_s3_bucket.s3.bucket
 }
-
 
 
 # Data source for IAM policy document
